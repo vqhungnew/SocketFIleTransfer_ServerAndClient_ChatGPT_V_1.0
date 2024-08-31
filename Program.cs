@@ -2,17 +2,33 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection.Emit;
 using System.Text;
 
 class FileServer
 {
     static void Main()
     {
-        //Call Server Function
-        fileTransferServer();
+        START_PROGRAM:
+        Console.Clear();
+        Console.WriteLine("Welcome to FILE TRANSFER program supported by CHATGPT.");
+        Console.WriteLine("\nSelect your role:\n1. SERVER \t 2. CLIENT");
+        string yourChoice = Console.ReadLine();
 
-        //Call Client Function
-        fileTransferClient();
+        switch (yourChoice)
+        {
+            case "1":
+                //Call Server Function
+                fileTransferServer();
+                break;
+            case "2":
+                //Call Client Function
+                fileTransferClient();
+                break;
+            default:
+                goto START_PROGRAM;
+        }
+
     }
 
     private static void fileTransferServer()
